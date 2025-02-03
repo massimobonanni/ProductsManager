@@ -1,0 +1,34 @@
+﻿@using ProductsManager.WebSite.Models.ProductsController
+@model IndexViewModel;
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1>Products (@Model.SourceType)</h1>
+<br/>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price.ToString("C2")</td>
+                <td>@product.Stock</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = product.Id }) 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
